@@ -1,0 +1,38 @@
+{
+  "name": "arklem/message-bird-sms",
+  "description": "The Message Bird API integration for the Yii framework",
+  "keywords": [
+    "yii2",
+    "extension",
+    "sms"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Avaika Nametissa Jean Marcel"
+    }
+  ],
+
+  "require": {
+    "messagebird/php-rest-api": "~3.1.2",
+    "ext-json": "*",
+    "yiisoft/yii2": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "MessageBirdSms": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
