@@ -13,7 +13,17 @@ class MessageBird
     protected static $message;
 
     /**
-     *
+     * Initialize the Messenger
+     * @param $accessKey
+     * @param $originator
+     */
+    public function __construct($accessKey, $originator)
+    {
+        self::setAccessKey($accessKey);
+        self::setOriginator($originator);
+    }
+
+    /**
      * Send a Message
      *
      * @param array $receivers
