@@ -7,108 +7,97 @@ use MessageBird\Objects\Message;
 class MessageBird
 {
 
-//    protected $accessKey;
-//    protected $originator;
-//    protected $receiver;
-//    protected $message;
-
-//    /**
-//     * @param $accessKey
-//     * @param $originator
-//     */
-//    public function __construct($accessKey, $originator)
-//    {
-//        //Set the accesskey with which we'll send our messages
-//        $this->setAccessKey($accessKey);
-//
-//        //Set the Originator : Who the message come from
-//        $this->setOriginator($originator);
-//    }
+    protected static $accessKey;
+    protected static $originator;
+    protected static $receiver;
+    protected static $message;
 
     /**
+     *
+     * Send a Message
+     *
      * @param array $receivers
-     * @param $message
+     * @param string $message
      * @return void
      * @throws Exceptions\AuthenticateException
      * @throws Exceptions\BalanceException
      * @throws Exceptions\HttpException
      * @throws \JsonException
      */
-    public static function send($accesskey, $originator,array $receivers, $message)
+    public static function send(array $receivers, $message)
     {
-        $MessageBird = new Client($accesskey);
+        $MessageBird = new Client(self::getAccessKey());
         $Message = new Message();
-        $Message->originator = $originator;
+        $Message->originator = self::getOriginator();
         $Message->recipients = array($receivers);
         $Message->body = $message;
 
         $MessageBird->messages->create($Message);
     }
 
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getAccessKey()
-//    {
-//        return $this->accessKey;
-//    }
-//
-//    /**
-//     * @param mixed $accessKey
-//     */
-//    public function setAccessKey($accessKey)
-//    {
-//        $this->accessKey = $accessKey;
-//    }
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getOriginator()
-//    {
-//        return $this->originator;
-//    }
-//
-//    /**
-//     * @param mixed $originator
-//     */
-//    public function setOriginator($originator)
-//    {
-//        $this->originator = $originator;
-//    }
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getReceiver()
-//    {
-//        return $this->receiver;
-//    }
-//
-//    /**
-//     * @param mixed $receiver
-//     */
-//    public function setReceiver($receiver)
-//    {
-//        $this->receiver = $receiver;
-//    }
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getMessage()
-//    {
-//        return $this->message;
-//    }
-//
-//    /**
-//     * @param mixed $message
-//     */
-//    public function setMessage($message)
-//    {
-//        $this->message = $message;
-//    }
-//
+    /**
+     * @return mixed
+     */
+    public static function getAccessKey()
+    {
+        return self::$accessKey;
+    }
+
+    /**
+     * @param mixed $accessKey
+     */
+    public static function setAccessKey($accessKey)
+    {
+        self::$accessKey = $accessKey;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getOriginator()
+    {
+        return self::$originator;
+    }
+
+    /**
+     * @param mixed $originator
+     */
+    public static function setOriginator($originator)
+    {
+        self::$originator = $originator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getReceiver()
+    {
+        return self::$receiver;
+    }
+
+    /**
+     * @param mixed $receiver
+     */
+    public static function setReceiver($receiver)
+    {
+        self::$receiver = $receiver;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getMessage()
+    {
+        return self::$message;
+    }
+
+    /**
+     * @param mixed $message
+     */
+    public static function setMessage($message)
+    {
+        self::$message = $message;
+    }
+
 
 }
