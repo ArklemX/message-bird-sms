@@ -24,17 +24,17 @@ class MessageBird
     }
 
     /**
-     * Send a Message
+     * Send SMS
      *
      * @param array $receivers
      * @param string $message
-     * @return void
+     * @return array|Objects\Balance|Objects\Conversation\Conversation|Objects\Hlr|Objects\Lookup|Message|Objects\MessageResponse|Objects\Verify|Objects\VoiceMessage|null
      * @throws Exceptions\AuthenticateException
      * @throws Exceptions\BalanceException
      * @throws Exceptions\HttpException
      * @throws \JsonException
      */
-    public static function send(array $receivers, $message)
+    public static function send(array $receivers, string $message)
     {
         $MessageBird = new Client(self::getAccessKey());
         $Message = new Message();
@@ -42,7 +42,7 @@ class MessageBird
         $Message->recipients = array($receivers);
         $Message->body = $message;
 
-        $MessageBird->messages->create($Message);
+        return $MessageBird->messages->create($Message);
     }
 
     /**
