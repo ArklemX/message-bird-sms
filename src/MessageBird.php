@@ -1,7 +1,8 @@
 <?php
 
-namespace MessageBird;
+namespace arklem\MessageBird;
 
+use MessageBird\Client;
 use MessageBird\Objects\Message;
 
 class MessageBird
@@ -24,15 +25,9 @@ class MessageBird
     }
 
     /**
-     * Send SMS
-     *
      * @param array $receivers
      * @param string $message
-     * @return array|Objects\Balance|Objects\Conversation\Conversation|Objects\Hlr|Objects\Lookup|Message|Objects\MessageResponse|Objects\Verify|Objects\VoiceMessage|null
-     * @throws Exceptions\AuthenticateException
-     * @throws Exceptions\BalanceException
-     * @throws Exceptions\HttpException
-     * @throws \JsonException
+     * @return mixed
      */
     public static function send(array $receivers, string $message)
     {
